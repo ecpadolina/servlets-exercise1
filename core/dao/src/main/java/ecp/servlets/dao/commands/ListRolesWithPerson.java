@@ -2,6 +2,9 @@ package ecp.servlets.dao.commands;
 
 import ecp.servlets.dao.Command;
 import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
+import ecp.servlets.model.Role;
+import ecp.servlets.model.Role;
 import java.util.List;
 
 public class ListRolesWithPerson implements Command{
@@ -17,7 +20,7 @@ public class ListRolesWithPerson implements Command{
 	}
 
 	public Object execute(){
-		List<Object> list = session.createQuery(query).list();
+		List<Object> list = session.createQuery(query).setResultTransformer(Transformers.aliasToBean(Role.class)).list();
 		return list;
 	}
 }

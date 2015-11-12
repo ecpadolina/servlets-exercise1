@@ -36,10 +36,10 @@ public class Operation{
 
 	public String listRolesWithPerson(){
 		String form = "<form method=\"GET\">List Person By Roles: <select name=\"roles\">";
-		List<Object[]> tmpRoles = rm.listRolesWithPerson("select proles.id, proles.role_type from Person person INNER JOIN person.roles as proles");
+		List<Role> tmpRoles = rm.listRolesWithPerson("select proles.roleId as roleId, proles.roleType as roleType from Person person INNER JOIN person.roles as proles");
 		Map<Integer, String> roles = new HashMap<Integer,String>();
-		for(Object[] tmpRole : tmpRoles){
-			roles.put((Integer)tmpRole[0], (String)tmpRole[1]);
+		for(Role tmpRole : tmpRoles){
+			roles.put(tmpRole.getRoleId(), tmpRole.getRoleType());
 		}
 		for(Map.Entry<Integer,String> entry : roles.entrySet()){
 			form = form + "<option value=\"" + (Integer)entry.getKey() + "\">" + (String)entry.getValue() + "</option>";
@@ -80,7 +80,7 @@ public class Operation{
 		String temp = "";
 		List<String> tmpList = new ArrayList<String>();
 		for(Role role : roles){
-			tmpList.add(role.getRole_type());
+			tmpList.add(role.getRoleType());
 		}
 		if(tmpList.contains("CEO")){
 			temp = temp + "<input type=\"checkbox\" name=\"role\" value=\"1\" checked>CEO";
@@ -214,7 +214,7 @@ public class Operation{
 			      	contactString = contactString + contact.getContactInfo() + " ";
 			      }
 			      for(Role role : roles){
-			      	roleString = roleString + role.getRole_type() + " ";
+			      	roleString = roleString + role.getRoleType() + " ";
 			      }
 
 			      output = output + "<tr><td>" + person.getId() + "</td><td>" + person.getName().getFirstName()

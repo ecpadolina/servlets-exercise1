@@ -21,40 +21,40 @@ public class Role{
 
   @Id
   @Column(name = "role_id")
-  private int role_id;
+  private int roleId;
   @Column(name = "role_type")
-  private String role_type;
+  private String roleType;
   @Column(name = "isActive", nullable = false)
   private boolean isActive = true;
   @ManyToMany(mappedBy="roles", fetch=FetchType.EAGER)
   private Set<Person> persons;
   
   public Role(){}
-  public Role(int role_id, String role_type, Set<Person> persons, boolean isActive){
-    this.role_id = role_id;
-    this.role_type = role_type;
+  public Role(int roleId, String roleType, Set<Person> persons, boolean isActive){
+    this.roleId = roleId;
+    this.roleType = roleType;
     this.persons = persons;
     this.isActive = isActive;
   }  
   
-  public void setRole_id(int role_id){
-    this.role_id = role_id;
+  public void setRoleId(int roleId){
+    this.roleId = roleId;
   }
   
-  public void setRole_type(String role_type){
-    this.role_type = role_type;
+  public void setRole_type(String roleType){
+    this.roleType = roleType;
   }
   
   public void setPersons(Set<Person> persons){
     this.persons = persons;
   }
   
-  public int getRole_id(){
-    return role_id;
+  public int getRoleId(){
+    return roleId;
   }
   
-  public String getRole_type(){
-    return role_type;
+  public String getRoleType(){
+    return roleType;
   }
   
   public Set<Person> getPersons(){
@@ -74,7 +74,7 @@ public class Role{
 		if (obj == null) return false;
 		if (!this.getClass().equals(obj.getClass())) return false;
 		Role obj2 = (Role)obj;
-		if(this.role_id == obj2.getRole_id()){
+		if(this.roleId == obj2.getRoleId()){
 			return true;
 		}
 		return false;
@@ -82,7 +82,7 @@ public class Role{
 	
 	@Override
 	public int hashCode() {
-		return this.role_id;
+		return this.roleId;
 	}
   
 }

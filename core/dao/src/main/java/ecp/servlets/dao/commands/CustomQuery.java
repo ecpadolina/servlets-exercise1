@@ -25,7 +25,7 @@ public class CustomQuery implements Command{
 	public Object execute(){
 		Criteria crit = session.createCriteria(Person.class);
 		ProjectionList properties = Projections.projectionList();
-		crit.add(Restrictions.eq("roles.role_id", parameter));
+		crit.add(Restrictions.eq("roles.roleId", parameter));
 		crit.createAlias("roles","roles");
 		crit.createAlias("contacts","contacts", JoinType.FULL_JOIN);
 		properties.add(Projections.property("id"));
