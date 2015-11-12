@@ -1,0 +1,52 @@
+<form method="POST">
+<h1> Add Person </h1>
+<br>
+<br>
+First Name: <input id="firstName" value="" type="text" name="firstName"/>
+<br>
+Middle Name: <input id="middleName" value="" type="text" name="middleName"/>
+<br>
+Last Name: <input id="lastName" value="" type="text" name="lastName"/>
+<br>
+Birthday: <input id="birthday" type="date" name="birthday"/>
+<br>
+House Number: <input id="houseNo" type="text" name="houseNo"/>
+<br>
+Street: <input id="street" type="text" name="street"/>
+<br>
+Barangay: <input id="barangay" type="text" name="barangay"/>
+<br>
+Municipality: <input id="municipality" type="text" name="municipality"/>
+<br>
+Province: <input id="province" type="text" name="province"/>
+<br>
+Zipcode: <input id="zipcode" type="number" name="zipcode"/>
+<br>
+GWA: <input id="gwa" type="number" name="gwa" step="0.01" min="1" max="5"/>
+<br>
+<br>
+Employment Status
+<br>
+<input type="radio" name="employmentStatus" value="Intern">Intern<br>
+<input type="radio" name="employmentStatus" value="Probationary">Probationary<br>
+<input type="radio" name="employmentStatus" value="Regular">Regular<br>
+<input type="radio" name="employmentStatus" value="Resigned">Resigned<br>
+<br>
+Contacts:
+<select name="contactType">
+<option value="landline">Landline</option>
+<option value="mobile">Mobile</option>
+<option value="email">Email Address</option>
+</select>
+<input type="text" name="contact"/>
+<br><br>
+Roles:
+<input type="checkbox" name="role" value="1">CEO
+<input type="checkbox" name="role" value="2">CFO
+<input type="checkbox" name="role" value="3">COO
+<input type="checkbox" name="role" value="4">Admin
+<input type="checkbox" name="role" value="5">Manager
+<br>
+<br>
+<input type="submit">
+</form>
