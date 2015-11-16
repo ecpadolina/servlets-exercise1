@@ -115,7 +115,7 @@ public class Operation{
 	}
 
 	public String listPersonWithRoles(int roleId){
-		List<Object[]> list = pm.listPersonWithRoles(roleId);
+		List<PersonModel> list = pm.listPersonWithRoles(roleId);
 		String output = "<table><tr><th>ID</th>"
 					  + "<th>First Name</th>"
 					  + "<th>Last Name</th>"
@@ -123,32 +123,31 @@ public class Operation{
 					  + "<th>Grade</th>"
 					  + "<th>Contacts</th>"
 					  + "<th>Actions</th>";
-
 		if(!list.isEmpty()){
 			LinkedHashMap<Integer, Person> map = new LinkedHashMap<Integer,Person>();
-			for(Object[] obj : list){
-				if(map.get(obj[0]) == null){
+			for(PersonModel pModel : list){
+				if(map.get(pModel.getId()) == null){
 					Person person = new Person();
 					Set<ContactInfo> contacts = new HashSet<ContactInfo>();
 					ContactInfo contact = new ContactInfo();
 					Name name = new Name();
-					person.setId((Integer)obj[0]);
-					name.setFirstName((String)obj[1]);
-					name.setLastName((String)obj[2]);
+					person.setId(pModel.getId());
+					name.setFirstName(pModel.getFirstName());
+					name.setLastName(pModel.getLastName());
 					person.setName(name);
-					person.setBirthday((Date)obj[3]);
-					person.setGwa((Float)obj[4]);
-					if(obj[5] != null){
-						contact.setContactInfo((String)obj[5]);
+					person.setBirthday(pModel.getBirthday());
+					person.setGwa(pModel.getGwa());
+					if(pModel.getContactInfo() != null){
+						contact.setContactInfo(pModel.getContactInfo());
 						contacts.add(contact);
 						person.setContacts(contacts);
 					}
-					map.put((Integer)obj[0], person);
+					map.put(pModel.getId(), person);
 				} else {
-					Person person = map.get((Integer)obj[0]);
+					Person person = map.get(pModel.getId());
 					Set<ContactInfo> contacts = person.getContacts();
 					ContactInfo contact = new ContactInfo();
-					contact.setContactInfo((String)obj[5]);
+					contact.setContactInfo(pModel.getContactInfo());
 					contacts.add(contact);
 					person.setContacts(contacts);
 				}
