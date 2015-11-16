@@ -20,7 +20,7 @@ public class ListRolesWithPerson implements Command{
 	}
 
 	public Object execute(){
-		List<Object> list = session.createQuery(query).setResultTransformer(Transformers.aliasToBean(Role.class)).list();
+		List<Object> list = session.createQuery(query).setCacheable(true).setResultTransformer(Transformers.aliasToBean(Role.class)).list();
 		return list;
 	}
 }
